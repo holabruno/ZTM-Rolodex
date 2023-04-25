@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('render');
+    console.log('render from App.js');
 
     //cast state values to class variables
     const { monsters, searchField } = this.state;
@@ -52,7 +52,7 @@ class App extends Component {
 
     return (
       <div className="App" >
-        <h1>Monster Rolodex</h1>
+        <h1 className='app-title'>Monster Rolodex</h1>
 
         <SearchBox onChangeHandler={onSearchChange} placeholder="Search Monsters" className="searchbox" />
 
