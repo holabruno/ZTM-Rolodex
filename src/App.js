@@ -27,12 +27,25 @@ class App extends Component {
       });
   }
 
+  onSearchChange = (evt) => {
+    const searchField = evt.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField }; //key/value
+    },
+      () => { console.log({ endingArray: this.state.monsters }) }
+    )
+
+  }
 
   render() {
     console.log('render');
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    //cast state values to class variables
+    const { monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
     });
 
     return (
@@ -42,14 +55,7 @@ class App extends Component {
           name="search"
           type="search"
           placeholder="search monsters"
-          onChange={(evt) => {
-            const searchField = evt.target.value.toLocaleLowerCase();
-            this.setState(() => {
-              return { searchField }; //key/value
-            },
-              () => { console.log({ endingArray: this.state.monsters }) }
-            )
-          }}
+          onChange={onSearchChange}
         />
         {filteredMonsters.map((el) => {
           return (
