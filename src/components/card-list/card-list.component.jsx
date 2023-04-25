@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './card-list.styles.css';
 
 class CardList extends Component {
     render() {
@@ -6,17 +7,19 @@ class CardList extends Component {
 
         console.log('render from card-list component');
         return (
-            <>
-                {monsters.map((monster) => {
-                    return (
-                        <div key={monster.id}>
-                            <h2>{monster.name}</h2>
-                            <img src={monster.photo} />
-                        </div>
-                    );
-                })
+            <div className='card-list'>
+                {
+                    monsters.map((monster) => {
+                        const { name, email, id } = monster;
+                        return (
+                            <div key={id} className='card-container'>
+                                <h2>{name}</h2>
+                                <img alt={name} src={`https://robohash.org/${monster.id}?set=2&size=180x180`} />
+                            </div>
+                        );
+                    })
                 }
-            </>
+            </div>
         );
     }
 }
