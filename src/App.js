@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CardList from './components/card-list/card-list.component';
+
 
 class App extends Component {
   constructor() {
@@ -61,12 +63,13 @@ class App extends Component {
           return (
             <>
               <div key={el.id}>
-                <h2>{el.name}</h2>
+                <CardList monsters={filteredMonsters} name={el.name} />
               </div>
             </>
           );
         })
         }
+
       </div >
     );
   }
